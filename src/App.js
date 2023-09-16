@@ -9,7 +9,6 @@ import Textform from './components/Textform';
 
 
 function App() {
-  //const [mode, setDarkMode] = useState('light');//wheather dark mode is enabled or not
   const [alert, setAlert] = useState("");
   const [mode, setMode] = useState('light');
 
@@ -33,14 +32,14 @@ function App() {
       type: type
     })
     setTimeout(() => {
-      setAlert('');
+      setAlert({});
     }, 2000);
   }
   return (
     <>
       {/* <BrowserRouter> */}
         <Navbar mode={mode}  toogleMode={toogleMode} />
-        <div className="container my-4">
+        <div className="container my-1">
           <Alert alert={alert} />
           {/* <Routes>
             <Route exact path="/about" element={<About />}></Route> */}
