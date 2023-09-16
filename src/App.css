@@ -1,3 +1,42 @@
-body{
-    background-color: rgb(72, 69, 78);
+ body{
+    background-color: rgb(226, 225, 230);
+}
+
+.navbar{
+    padding: 0%;
+}
+
+.nav-2{
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.form-check{
+    margin-right: 8px;
+    padding-right: 10px;
+    padding-left: 55px;
+    padding-top: 6px;
+    padding-bottom: 9px;
+    border-radius: 100px;
+}
+
+.form{
+     /* background-color: #5a54769f; */
+    border: 2px solid black; 
+    width: 100%;
+} 
+
+textarea{
+    font-size: 1.5rem;
+    word-spacing: 2px;
+    font-family:Arial, Helvetica, sans-serif;
+    word-spacing: 2px;
+    letter-spacing: 1.1px;
+}
+
+@media screen and (max-width: 900px){
+    html{
+        scroll-behavior: smooth;
+    }
 }

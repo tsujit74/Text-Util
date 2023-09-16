@@ -36,38 +36,29 @@ export default function Textform(props) {
     }
 
     const handleOnChange = (event) => {
-        console.log("On change")
         setText(event.target.value);
     }
-
-    const [mStyle] = useState(
-        {
-            color: 'white'
-        }
-    )
     
     const [text, setText] = useState('');
     return (
         <>
             <div className='container my-3'>
-                <h4 style={mStyle}>{props.heading}</h4>
+                <h4>{props.heading}</h4>
                 <div className="mb-3">
-                    <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="5"></textarea>
+                    <textarea className="form" value={text} onChange={handleOnChange} style={{backgroundColor:(props.mode==='dark'?'#5a54769f':'rgb(226, 225, 230)'),color:(props.mode==='dark'?'white':'black')}} id="myBox" rows={'4'}></textarea>
                 </div>
-                <button className='btn btn-primary mx-1' onClick={handleUpClick}>Convert to upper case</button>
-                <button className='btn btn-primary mx-2' onClick={handleLoClick}>Convert to lower case</button>
-                <button className='btn btn-primary mx-2' onClick={handleCopy}>Copy Text</button>
-                <button className='btn btn-primary mx-2' onClick={handelExtraSpaces}>Remove spaces</button>
-                <button className='btn btn-primary mx-2' onClick={handelFirstCapital}>First Capital</button>
-                <button className='btn btn-danger mx-2' onClick={handleClearClick}>Clear</button>
+                <button disabled={text.length===0} className='btn btn-primary mx-1 my-2' onClick={handleUpClick}>Convert to upper case</button>
+                <button disabled={text.length===0} className='btn btn-primary mx-2 my-2' onClick={handleLoClick}>Convert to lower case</button>
+                <button disabled={text.length===0} className='btn btn-primary mx-2 my-2' onClick={handleCopy}>Copy Text</button>
+                <button disabled={text.length===0} className='btn btn-primary mx-2 my-2' onClick={handelExtraSpaces}>Remove spaces</button>
+                <button disabled={text.length===0} className='btn btn-primary mx-2 my-2' onClick={handelFirstCapital}>First Capital</button>
+                <button disabled={text.length===0} className='btn btn-danger mx-2 my-2' onClick={handleClearClick}>Clear</button>
             </div>
-            <div style={mStyle} className="container my-3">
-
-                <h5>Preview</h5>
-                <p>{text.length>0?text:"Enter Some Thing in the TextBox.. "}</p>
-                <h5>Given Text Summary</h5>
-                <p>{text.split(" ").length} words and {text.length} characters.</p>
-                <p>{0.008 * text.split(" ").length} Minutes to take a read above Paragraph..</p>
+            <div className="container my-3">
+            <h5>Given Text Summary</h5>
+                <textarea className="form" value={text.length>0?text:"Nothing to preview.."} style={{backgroundColor:(props.mode==='dark'?'#5a54769f':'rgb(226, 225, 230)'),color:(props.mode==='dark'?'white':'black')}} rows={'4'}></textarea>
+                <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters.</p>
+                <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes to take a read above Paragraph..</p>
 
             </div>
         </>

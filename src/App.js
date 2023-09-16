@@ -11,6 +11,21 @@ import Textform from './components/Textform';
 function App() {
   //const [mode, setDarkMode] = useState('light');//wheather dark mode is enabled or not
   const [alert, setAlert] = useState("");
+  const [mode, setMode] = useState('light');
+
+  const toogleMode=()=>{
+    if(mode==='light'){
+      setMode('dark');
+      document.body.style.color='white'
+      document.body.style.backgroundColor = '#424569'
+  }
+  else{
+      setMode('light');
+      document.body.style.color='black'
+      document.body.style.backgroundColor = 'rgb(226, 225, 230)'
+  }
+  }
+
 
   const showAlert = (message, type) => {
     setAlert({
@@ -24,13 +39,13 @@ function App() {
   return (
     <>
       {/* <BrowserRouter> */}
-        <Navbar about="About Us" />
+        <Navbar mode={mode}  toogleMode={toogleMode} />
         <div className="container my-4">
           <Alert alert={alert} />
           {/* <Routes>
             <Route exact path="/about" element={<About />}></Route> */}
             {/* <Route exact path="/" element={ }></Route> */}
-            <Textform showAlert={showAlert} heading="Enter Text to analyze " />
+            <Textform showAlert={showAlert} mode={mode} toogleMode={toogleMode} heading="Enter Text to analyze " />
           {/* </Routes> */}
         </div>
       {/* </BrowserRouter> */}
